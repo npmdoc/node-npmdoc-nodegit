@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://nodegit.org"
-
-    >nodegit (v0.18.0)</a>
+    <a href="http://nodegit.org">nodegit (v0.18.0)</a>
 </h1>
 <h4>Node.js libgit2 asynchronous native bindings</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.nodegit">module nodegit</a><ol>
 
@@ -209,25 +202,25 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function retrieveExternalDependencies() {
-  if (process.platform === &#x22;win32&#x22;) {
-    return Promise.resolve(&#x22;&#x22;);
+  if (process.platform === "win32") {
+    return Promise.resolve("");
   }
 
   return new Promise(function(resolve, reject) {
-    console.info(&#x22;[nodegit] Configuring libssh2.&#x22;);
-    var opensslDir = rooted(&#x22;vendor/openssl/openssl&#x22;);
+    console.info("[nodegit] Configuring libssh2.");
+    var opensslDir = rooted("vendor/openssl/openssl");
     var newEnv = {};
     Object.keys(process.env).forEach(function(key) {
       newEnv[key] = process.env[key];
     });
-    newEnv.CPPFLAGS = newEnv.CPPFLAGS || &#x22;&#x22;;
-    newEnv.CPPFLAGS += &#x22; -I&#x22; + path.join(opensslDir, &#x22;include&#x22;);
+    newEnv.CPPFLAGS = newEnv.CPPFLAGS || "";
+    newEnv.CPPFLAGS += " -I" + path.join(opensslDir, "include");
     newEnv.CPPFLAGS = newEnv.CPPFLAGS.trim();
 
     cp.exec(
-      rooted(&#x22;vendor/libssh2/configure&#x22;) +
-        &#x22; --with-libssl-prefix=&#x22; + opensslDir,
-      {cwd: rooted(&#x22;vendor/libssh2/&#x22;), env: newEnv},
+      rooted("vendor/libssh2/configure") +
+        " --with-libssl-prefix=" + opensslDir,
+      {cwd: rooted("vendor/libssh2/"), env: newEnv},
       function(err, stdout, stderr) {
         if (err) {
           console.error(err);
@@ -281,11 +274,11 @@
   return new Promise(function(resolve, reject) {
     var cmd;
 
-    if (process.platform === &#x22;win32&#x22;) {
-      cmd = &#x22;where git&#x22;;
+    if (process.platform === "win32") {
+      cmd = "where git";
     }
     else {
-      cmd = &#x22;which git&#x22;;
+      cmd = "which git";
     }
 
     cp.exec(cmd, function(err, stdout, stderr) {
@@ -311,43 +304,43 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function install() {
-  console.log(&#x22;[nodegit] Running install script&#x22;);
+  console.log("[nodegit] Running install script");
 
-  var nodePreGyp = &#x22;node-pre-gyp&#x22;;
+  var nodePreGyp = "node-pre-gyp";
 
-  if (process.platform === &#x22;win32&#x22;) {
-    nodePreGyp += &#x22;.cmd&#x22;;
+  if (process.platform === "win32") {
+    nodePreGyp += ".cmd";
   }
 
-  var args = [&#x22;install&#x22;];
+  var args = ["install"];
 
   if (buildFlags.mustBuild) {
     console.info(
-      &#x22;[nodegit] Pre-built download disabled, building from source.&#x22;
+      "[nodegit] Pre-built download disabled, building from source."
     );
-    args.push(&#x22;--build-from-source&#x22;);
+    args.push("--build-from-source");
 
     if (buildFlags.debugBuild) {
-      console.info(&#x22;[nodegit] Building debug version.&#x22;);
-      args.push(&#x22;--debug&#x22;);
+      console.info("[nodegit] Building debug version.");
+      args.push("--debug");
     }
   }
   else {
-    args.push(&#x22;--fallback-to-build&#x22;);
+    args.push("--fallback-to-build");
   }
 
   return new Promise(function(resolve, reject) {
     var spawnedNodePreGyp = spawn(nodePreGyp, args);
 
-    spawnedNodePreGyp.stdout.on(&#x22;data&#x22;, function(data) {
+    spawnedNodePreGyp.stdout.on("data", function(data) {
       console.info(data.toString().trim());
     });
 
-    spawnedNodePreGyp.stderr.on(&#x22;data&#x22;, function(data) {
+    spawnedNodePreGyp.stderr.on("data", function(data) {
       console.error(data.toString().trim());
     });
 
-    spawnedNodePreGyp.on(&#x22;close&#x22;, function(code) {
+    spawnedNodePreGyp.on("close", function(code) {
       if (!code) {
         resolve();
       } else {
@@ -356,7 +349,7 @@
     });
   })
     .then(function() {
-      console.info(&#x22;[nodegit] Completed installation successfully.&#x22;);
+      console.info("[nodegit] Completed installation successfully.");
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -373,25 +366,25 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function install() {
   if (buildFlags.isGitRepo) {
-    // If we&#x27;re building NodeGit from a git repo we aren&#x27;t going to do any
+    // If we're building NodeGit from a git repo we aren't going to do any
     // cleaning up
     return Promise.resolve();
   }
   if (buildFlags.isElectron || buildFlags.isNWjs) {
-    // If we&#x27;re building for electron or NWjs, we&#x27;re unable to require the
+    // If we're building for electron or NWjs, we're unable to require the
     // built library so we have to just assume success, unfortunately.
     return Promise.resolve();
   }
 
-  return exec(&#x22;node \&#x22;&#x22; + path.join(rootPath, &#x22;dist/nodegit.js\&#x22;&#x22;))
+  return exec("node \"" + path.join(rootPath, "dist/nodegit.js\""))
     .catch(function(e) {
-      if (~e.toString().indexOf(&#x22;Module version mismatch&#x22;)) {
+      if (~e.toString().indexOf("Module version mismatch")) {
         console.warn(
-          &#x22;[nodegit] WARN - NodeGit was built for a different version of node.&#x22;
+          "[nodegit] WARN - NodeGit was built for a different version of node."
         );
         console.warn(
-          &#x22;If you are building NodeGit for electron/nwjs you can &#x22; +
-          &#x22;ignore this warning.&#x22;
+          "If you are building NodeGit for electron/nwjs you can " +
+          "ignore this warning."
         );
       }
       else {
@@ -399,20 +392,20 @@
       }
     })
     .then(function() {
-      // Is we&#x27;re using NodeGit from a package manager then let&#x27;s clean up after
+      // Is we're using NodeGit from a package manager then let's clean up after
       // ourselves when we install successfully.
       if (!buildFlags.mustBuild) {
-        // We can&#x27;t remove the source files yet because apparently the
-        // &#x22;standard workflow&#x22; for native node moduels in Electron/nwjs is to
-        // build them for node and then nah eff that noise let&#x27;s rebuild them
+        // We can't remove the source files yet because apparently the
+        // "standard workflow" for native node moduels in Electron/nwjs is to
+        // build them for node and then nah eff that noise let's rebuild them
         // again for the actual platform! Hurray!!! When that madness is dead
         // we can clean up the source which is a serious amount of data.
-        // fse.removeSync(path.join(rootPath, &#x22;vendor&#x22;));
-        // fse.removeSync(path.join(rootPath, &#x22;src&#x22;));
-        // fse.removeSync(path.join(rootPath, &#x22;include&#x22;));
+        // fse.removeSync(path.join(rootPath, "vendor"));
+        // fse.removeSync(path.join(rootPath, "src"));
+        // fse.removeSync(path.join(rootPath, "include"));
 
-        fse.removeSync(path.join(rootPath, &#x22;build/Release/*.a&#x22;));
-        fse.removeSync(path.join(rootPath, &#x22;build/Release/obj.target&#x22;));
+        fse.removeSync(path.join(rootPath, "build/Release/*.a"));
+        fse.removeSync(path.join(rootPath, "build/Release/obj.target"));
       }
     });
 }</pre></li>
@@ -429,13 +422,13 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function prepareForBuild() {
-  console.log(&#x22;[nodegit] Running pre-install script&#x22;);
+  console.log("[nodegit] Running pre-install script");
 
-  return exec(&#x22;npm -v&#x22;)
+  return exec("npm -v")
     .then(function(npmVersion) {
-      if (npmVersion.split(&#x22;.&#x22;)[0] &#x3c; 3) {
-        console.log(&#x22;[nodegit] npm@2 installed, pre-loading required packages&#x22;);
-        return exec(&#x22;npm install --ignore-scripts&#x22;);
+      if (npmVersion.split(".")[0] &lt; 3) {
+        console.log("[nodegit] npm@2 installed, pre-loading required packages");
+        return exec("npm install --ignore-scripts");
       }
 
       return Promise.resolve();
@@ -445,8 +438,8 @@
     })
     .then(function() {
       if (buildFlags.isGitRepo) {
-        var submodules = require(local(&#x22;submodules&#x22;));
-        var generate = require(local(&#x22;../generate&#x22;));
+        var submodules = require(local("submodules"));
+        var generate = require(local("../generate"));
         return submodules()
           .then(function() {
             return generate();
@@ -472,25 +465,25 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function retrieveExternalDependencies() {
-  if (process.platform === &#x22;win32&#x22;) {
-    return Promise.resolve(&#x22;&#x22;);
+  if (process.platform === "win32") {
+    return Promise.resolve("");
   }
 
   return new Promise(function(resolve, reject) {
-    console.info(&#x22;[nodegit] Configuring libssh2.&#x22;);
-    var opensslDir = rooted(&#x22;vendor/openssl/openssl&#x22;);
+    console.info("[nodegit] Configuring libssh2.");
+    var opensslDir = rooted("vendor/openssl/openssl");
     var newEnv = {};
     Object.keys(process.env).forEach(function(key) {
       newEnv[key] = process.env[key];
     });
-    newEnv.CPPFLAGS = newEnv.CPPFLAGS || &#x22;&#x22;;
-    newEnv.CPPFLAGS += &#x22; -I&#x22; + path.join(opensslDir, &#x22;include&#x22;);
+    newEnv.CPPFLAGS = newEnv.CPPFLAGS || "";
+    newEnv.CPPFLAGS += " -I" + path.join(opensslDir, "include");
     newEnv.CPPFLAGS = newEnv.CPPFLAGS.trim();
 
     cp.exec(
-      rooted(&#x22;vendor/libssh2/configure&#x22;) +
-        &#x22; --with-libssl-prefix=&#x22; + opensslDir,
-      {cwd: rooted(&#x22;vendor/libssh2/&#x22;), env: newEnv},
+      rooted("vendor/libssh2/configure") +
+        " --with-libssl-prefix=" + opensslDir,
+      {cwd: rooted("vendor/libssh2/"), env: newEnv},
       function(err, stdout, stderr) {
         if (err) {
           console.error(err);
@@ -554,11 +547,11 @@
   return new Promise(function(resolve, reject) {
     var cmd;
 
-    if (process.platform === &#x22;win32&#x22;) {
-      cmd = &#x22;where git&#x22;;
+    if (process.platform === "win32") {
+      cmd = "where git";
     }
     else {
-      cmd = &#x22;which git&#x22;;
+      cmd = "which git";
     }
 
     cp.exec(cmd, function(err, stdout, stderr) {
@@ -589,43 +582,43 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function install() {
-  console.log(&#x22;[nodegit] Running install script&#x22;);
+  console.log("[nodegit] Running install script");
 
-  var nodePreGyp = &#x22;node-pre-gyp&#x22;;
+  var nodePreGyp = "node-pre-gyp";
 
-  if (process.platform === &#x22;win32&#x22;) {
-    nodePreGyp += &#x22;.cmd&#x22;;
+  if (process.platform === "win32") {
+    nodePreGyp += ".cmd";
   }
 
-  var args = [&#x22;install&#x22;];
+  var args = ["install"];
 
   if (buildFlags.mustBuild) {
     console.info(
-      &#x22;[nodegit] Pre-built download disabled, building from source.&#x22;
+      "[nodegit] Pre-built download disabled, building from source."
     );
-    args.push(&#x22;--build-from-source&#x22;);
+    args.push("--build-from-source");
 
     if (buildFlags.debugBuild) {
-      console.info(&#x22;[nodegit] Building debug version.&#x22;);
-      args.push(&#x22;--debug&#x22;);
+      console.info("[nodegit] Building debug version.");
+      args.push("--debug");
     }
   }
   else {
-    args.push(&#x22;--fallback-to-build&#x22;);
+    args.push("--fallback-to-build");
   }
 
   return new Promise(function(resolve, reject) {
     var spawnedNodePreGyp = spawn(nodePreGyp, args);
 
-    spawnedNodePreGyp.stdout.on(&#x22;data&#x22;, function(data) {
+    spawnedNodePreGyp.stdout.on("data", function(data) {
       console.info(data.toString().trim());
     });
 
-    spawnedNodePreGyp.stderr.on(&#x22;data&#x22;, function(data) {
+    spawnedNodePreGyp.stderr.on("data", function(data) {
       console.error(data.toString().trim());
     });
 
-    spawnedNodePreGyp.on(&#x22;close&#x22;, function(code) {
+    spawnedNodePreGyp.on("close", function(code) {
       if (!code) {
         resolve();
       } else {
@@ -634,7 +627,7 @@
     });
   })
     .then(function() {
-      console.info(&#x22;[nodegit] Completed installation successfully.&#x22;);
+      console.info("[nodegit] Completed installation successfully.");
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -656,25 +649,25 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function install() {
   if (buildFlags.isGitRepo) {
-    // If we&#x27;re building NodeGit from a git repo we aren&#x27;t going to do any
+    // If we're building NodeGit from a git repo we aren't going to do any
     // cleaning up
     return Promise.resolve();
   }
   if (buildFlags.isElectron || buildFlags.isNWjs) {
-    // If we&#x27;re building for electron or NWjs, we&#x27;re unable to require the
+    // If we're building for electron or NWjs, we're unable to require the
     // built library so we have to just assume success, unfortunately.
     return Promise.resolve();
   }
 
-  return exec(&#x22;node \&#x22;&#x22; + path.join(rootPath, &#x22;dist/nodegit.js\&#x22;&#x22;))
+  return exec("node \"" + path.join(rootPath, "dist/nodegit.js\""))
     .catch(function(e) {
-      if (~e.toString().indexOf(&#x22;Module version mismatch&#x22;)) {
+      if (~e.toString().indexOf("Module version mismatch")) {
         console.warn(
-          &#x22;[nodegit] WARN - NodeGit was built for a different version of node.&#x22;
+          "[nodegit] WARN - NodeGit was built for a different version of node."
         );
         console.warn(
-          &#x22;If you are building NodeGit for electron/nwjs you can &#x22; +
-          &#x22;ignore this warning.&#x22;
+          "If you are building NodeGit for electron/nwjs you can " +
+          "ignore this warning."
         );
       }
       else {
@@ -682,20 +675,20 @@
       }
     })
     .then(function() {
-      // Is we&#x27;re using NodeGit from a package manager then let&#x27;s clean up after
+      // Is we're using NodeGit from a package manager then let's clean up after
       // ourselves when we install successfully.
       if (!buildFlags.mustBuild) {
-        // We can&#x27;t remove the source files yet because apparently the
-        // &#x22;standard workflow&#x22; for native node moduels in Electron/nwjs is to
-        // build them for node and then nah eff that noise let&#x27;s rebuild them
+        // We can't remove the source files yet because apparently the
+        // "standard workflow" for native node moduels in Electron/nwjs is to
+        // build them for node and then nah eff that noise let's rebuild them
         // again for the actual platform! Hurray!!! When that madness is dead
         // we can clean up the source which is a serious amount of data.
-        // fse.removeSync(path.join(rootPath, &#x22;vendor&#x22;));
-        // fse.removeSync(path.join(rootPath, &#x22;src&#x22;));
-        // fse.removeSync(path.join(rootPath, &#x22;include&#x22;));
+        // fse.removeSync(path.join(rootPath, "vendor"));
+        // fse.removeSync(path.join(rootPath, "src"));
+        // fse.removeSync(path.join(rootPath, "include"));
 
-        fse.removeSync(path.join(rootPath, &#x22;build/Release/*.a&#x22;));
-        fse.removeSync(path.join(rootPath, &#x22;build/Release/obj.target&#x22;));
+        fse.removeSync(path.join(rootPath, "build/Release/*.a"));
+        fse.removeSync(path.join(rootPath, "build/Release/obj.target"));
       }
     });
 }</pre></li>
@@ -717,13 +710,13 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function prepareForBuild() {
-  console.log(&#x22;[nodegit] Running pre-install script&#x22;);
+  console.log("[nodegit] Running pre-install script");
 
-  return exec(&#x22;npm -v&#x22;)
+  return exec("npm -v")
     .then(function(npmVersion) {
-      if (npmVersion.split(&#x22;.&#x22;)[0] &#x3c; 3) {
-        console.log(&#x22;[nodegit] npm@2 installed, pre-loading required packages&#x22;);
-        return exec(&#x22;npm install --ignore-scripts&#x22;);
+      if (npmVersion.split(".")[0] &lt; 3) {
+        console.log("[nodegit] npm@2 installed, pre-loading required packages");
+        return exec("npm install --ignore-scripts");
       }
 
       return Promise.resolve();
@@ -733,8 +726,8 @@
     })
     .then(function() {
       if (buildFlags.isGitRepo) {
-        var submodules = require(local(&#x22;submodules&#x22;));
-        var generate = require(local(&#x22;../generate&#x22;));
+        var submodules = require(local("submodules"));
+        var generate = require(local("../generate"));
         return submodules()
           .then(function() {
             return generate();
@@ -754,3 +747,4 @@
     ]
 </div>
 </div>
+</body></html>
