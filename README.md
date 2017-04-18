@@ -1,9 +1,14 @@
-# api documentation for  [nodegit (v0.18.0)](http://nodegit.org)  [![npm package](https://img.shields.io/npm/v/npmdoc-nodegit.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nodegit) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nodegit.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nodegit)
+# npmdoc-nodegit
+
+#### api documentation for  [nodegit (v0.18.0)](http://nodegit.org)  [![npm package](https://img.shields.io/npm/v/npmdoc-nodegit.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nodegit) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nodegit.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nodegit)
+
 #### Node.js libgit2 asynchronous native bindings
 
-[![NPM](https://nodei.co/npm/nodegit.png?downloads=true)](https://www.npmjs.com/package/nodegit)
+[![NPM](https://nodei.co/npm/nodegit.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/nodegit)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-nodegit/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-nodegit_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-nodegit/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-nodegit/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-nodegit/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-nodegit/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-nodegit/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-nodegit/build/screenCapture.npmPackageListing.svg)
 
@@ -30,12 +35,10 @@
     },
     "contributors": [
         {
-            "name": "John Haley",
-            "email": "john@haley.io"
+            "name": "John Haley"
         },
         {
-            "name": "Max Korp",
-            "email": "maxkorp@8bytealchemy.com"
+            "name": "Max Korp"
         }
     ],
     "dependencies": {
@@ -84,25 +87,20 @@
     "main": "dist/nodegit.js",
     "maintainers": [
         {
-            "name": "tbranyen",
-            "email": "tim@tabdeveloper.com"
+            "name": "tbranyen"
         },
         {
-            "name": "faceleg",
-            "email": "mike@pagesofinterest.net"
+            "name": "faceleg"
         },
         {
-            "name": "johnhaley81",
-            "email": "johnhaley81@gmail.com"
+            "name": "johnhaley81"
         },
         {
-            "name": "maxkorp",
-            "email": "maxkorp@8bytealchemy.com"
+            "name": "maxkorp"
         }
     ],
     "name": "nodegit",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/nodegit/nodegit.git"
@@ -138,16 +136,6 @@
     "version": "0.18.0"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module nodegit](#apidoc.module.nodegit)
-
-
-
-# <a name="apidoc.module.nodegit"></a>[module nodegit](#apidoc.module.nodegit)
 
 
 
