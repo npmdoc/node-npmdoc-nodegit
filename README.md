@@ -1,6 +1,6 @@
 # npmdoc-nodegit
 
-#### api documentation for  [nodegit (v0.18.0)](http://nodegit.org)  [![npm package](https://img.shields.io/npm/v/npmdoc-nodegit.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nodegit) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nodegit.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nodegit)
+#### basic api documentation for  [nodegit (v0.18.3)](http://nodegit.org)  [![npm package](https://img.shields.io/npm/v/npmdoc-nodegit.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nodegit) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nodegit.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nodegit)
 
 #### Node.js libgit2 asynchronous native bindings
 
@@ -69,13 +69,13 @@
         "lib": "./lib"
     },
     "dist": {
-        "shasum": "d4df65e4539003f1ed27853d101350f39c4746b3",
-        "tarball": "https://registry.npmjs.org/nodegit/-/nodegit-0.18.0.tgz"
+        "shasum": "305b6a305ea485fe5f1679fe37e6224a669ae9fc",
+        "tarball": "https://registry.npmjs.org/nodegit/-/nodegit-0.18.3.tgz"
     },
     "engines": {
         "node": ">= 4"
     },
-    "gitHead": "6ff12edfefbc03f29db33763ee634296ec3a955c",
+    "gitHead": "1cac5b20447d10d0310787568b4bf4a66a5733ee",
     "homepage": "http://nodegit.org",
     "keywords": [
         "libgit2",
@@ -133,7 +133,8 @@
         "libssh2": "1.7.0",
         "http_parser": "2.5.0"
     },
-    "version": "0.18.0"
+    "version": "0.18.3",
+    "bin": {}
 }
 ```
 
